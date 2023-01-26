@@ -1,0 +1,68 @@
+{
+    "name": "alhoqbani/laravel-filepond",
+    "description": "Handle Filepond upload to server with Laravel applications",
+    "keywords": [
+        "alhoqbani",
+        "laravel",
+        "laravel-filepond"
+    ],
+    "homepage": "https://github.com/alhoqbani/laravel-filepond",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Hamoud Alhoqbani",
+            "email": "h.alhoqbani@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^8.1",
+        "spatie/laravel-package-tools": "^1.14.0",
+        "illuminate/contracts": "^9.0"
+    },
+    "require-dev": {
+        "laravel/pint": "^1.0",
+        "nunomaduro/collision": "^6.0",
+        "orchestra/testbench": "^7.0",
+        "pestphp/pest": "^1.21",
+        "pestphp/pest-plugin-laravel": "^1.1",
+        "phpunit/phpunit": "^9.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Alhoqbani\\Filepond\\": "src",
+            "Alhoqbani\\Filepond\\Database\\Factories\\": "database/factories"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Alhoqbani\\Filepond\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "post-autoload-dump": "@php ./vendor/bin/testbench package:discover --ansi",
+        "analyse": "vendor/bin/phpstan analyse",
+        "test": "vendor/bin/pest",
+        "test-coverage": "vendor/bin/pest --coverage",
+        "format": "vendor/bin/pint"
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true,
+            "phpstan/extension-installer": true
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Alhoqbani\\Filepond\\FilepondServiceProvider"
+            ],
+            "aliases": {
+                "Filepond": "Alhoqbani\\Filepond\\Facades\\Filepond"
+            }
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
