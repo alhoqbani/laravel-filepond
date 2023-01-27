@@ -8,10 +8,12 @@ return new class extends Migration
 {
     public function up()
     {
-        Schema::create('laravel_filepond_table', function (Blueprint $table) {
+        Schema::create('filepond_media', function (Blueprint $table) {
             $table->id();
 
-            // add fields
+            $table->uuid()->unique();
+            $table->string('disk');
+            $table->string('path');
 
             $table->timestamps();
         });

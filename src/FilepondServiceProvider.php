@@ -21,7 +21,7 @@ class FilepondServiceProvider extends PackageServiceProvider
             ->name('laravel-filepond')
             ->hasConfigFile()
             ->hasViews()
-            ->hasMigration('create_laravel-filepond_table')
+            ->hasMigration('create_filepond_media_table')
             ->hasCommand(FilepondCommand::class);
 
         $this->registerRouteMacro();
@@ -31,7 +31,8 @@ class FilepondServiceProvider extends PackageServiceProvider
     {
         Route::macro('filepond', function (string $baseUrl = 'filepond') {
             Route::prefix($baseUrl)->group(function () {
-                Route::post('/upload', [FilepondUploadController::class, 'store']);
+                Route::post('/process', [FilepondUploadController::class, 'process']);
+                Route::delete('/revert', [FilepondUploadController::class, 'revert']);
             });
         });
     }
